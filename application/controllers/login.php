@@ -52,7 +52,8 @@ class Login extends CI_Controller {
 
   public function oubli_pass()
   {
-    $this->form_validation->set_rules('mail', 'Mail', 'trim|required|valid_email');
+    $this->form_validation->set_error_delimiters('<small class="error">', '</small>');
+    $this->form_validation->set_rules('email', 'eMail', 'trim|required|valid_email');
 
     if ($this->form_validation->run()) {
       $this->load->model('login_model');
@@ -71,7 +72,9 @@ class Login extends CI_Controller {
           redirect('login/oubli_password');
        }
     } else {
-      $this->session->flashdata('error', 'TEST');
+      $data["content"]= 'login/login';
+      $data['active'] = 'oubli_password';
+      $this->load->view ('template/template',$data);
     }
   }
 

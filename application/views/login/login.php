@@ -1,42 +1,67 @@
-<body>
+<header>
+    <div class="row">
+      <div class="twelve columns">
+        <h2>eMessage L3PMRES</h2>
+      </div>
+    </div>
+  </header>
 
-	<div id="container">
-		<hgroup id="login-title" class="large-margin-bottom">
-	<h1 class="login-title-image">Suivis des messages</h1>
-	<h5>&copy; L3pmres</h5>
-</hgroup>
+  <div class="row">
+  	<div class="twelve columns">
 
-<div id="form-wrapper">
+  		<?=$this->session->flashdata('error')?>
+  		
+		<ul class="accordion">
 
-	<div id="form-block" class="scratch-metal">
-		<div id="form-viewport">
-			<?=$this->session->flashdata('error')?>
-			<form method="post" action="" id="form-login" class="input-wrapper blue-gradient glossy" title="Connexion">
-				<ul class="inputs black-input large">
-					<!-- The autocomplete="off" attributes is the only way to prevent webkit browsers from filling the inputs with yellow -->
-					<li><span class="icon-user mid-margin-right"></span><input type="text" name="login" id="login" value="" class="input-unstyled" placeholder="Identifiant" autocomplete="off"></li>
-					<li><span class="icon-lock mid-margin-right"></span><input type="password" name="pass" id="pass" value="" class="input-unstyled" placeholder="Mot de passe" autocomplete="off"></li>
-				</ul>
 
-				<p class="button-height">
-					<button type="submit" class="button glossy float-right" id="login">Connexion</button>
-					<input type="checkbox" name="remind" id="remind" value="1" checked="checked" class="switch tiny mid-margin-right with-tooltip" title="Enable auto-login">
-					<label for="remind">Se souvenir de moi</label>
-				</p>
-			</form>
+            <li <?if (isset($active)) {if ($active=='connexion') {echo'class="active"';}}?>>
+              <div class="title">
+                <h5>Connexion</h5>
+              </div>
+              <div class="content">
+                <?=form_open('login/login')?>
+		  			<input type="text" name="login" id="login" value="" placeholder="Identifiant">
+					<input type="password" name="pass" id="pass" value="" placeholder="Mot de passe">
 
-			<div id="form-switch">
-				<span class="button-group">
-					<?=anchor('login', 'Connexion', 'class="button anthracite-gradient blue-active active"');?>
-					<?=anchor('login/oubli_password', 'Mot de passe perdu ?', 'class="button anthracite-gradient orange-active "');?>
-					<?=anchor('login/inscription', 'Inscription', 'class="button anthracite-gradient green-active "');?>
-				</span>
-			</div>
+					<button class="button twelve" type="submit">Connexion</button>
+		  		<?=form_close()?>
+            	</div>
+            </li>
+            
+            <li <?if (isset($active)) {if ($active=='oubli_password') {echo'class="active"';}}?>>
+              <div class="title">
+                <h5>Oubli de votre mot de passe</h5>
+              </div>
+              <div class="content">
+                <?=form_open('login/oubli_pass')?>
+		  			<input type="text" name="email" id="email" value="" placeholder="Votre adresse e-mail">
+		  			<?=form_error('email')?>
+					<button class="button twelve" type="submit">Récupérer mon mot de passe</button>
+		  		<?=form_close()?>
+              </div>
+            </li>
+
+
+
+            <li <?if (isset($active)) {if ($active=='inscription') {echo'class="active"';}}?>>
+              <div class="title">
+                <h5>Inscription</h5>
+              </div>
+              <div class="content">
+                <?=form_open('login/inscription')?>
+		  			<input type="text" name="nom" id="nom" value="" placeholder="Votre nom">
+		  			<input type="text" name="email" id="email" value="" placeholder="Votre adresse email">
+		  			<input type="text" name="login" id="login" value="" placeholder="Votre nom d'utilisateur">
+		  			<input type="password" name="password" id="password" value="" placeholder="Votre mot de passe">
+					<button class="button twelve" type="submit">M'inscrire</button>
+		  		<?=form_close()?>
+              </div>
+            </li>
+          </ul>
+
+  	</div>
+  </div>
 
 			
-		</div>
-	</div>
-</div>
 
-	</div>
 

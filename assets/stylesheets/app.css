@@ -1,0 +1,55 @@
+/* Artfully masterminded by ZURB  */
+
+/* -------------------------------------------------- 
+   Table of Contents
+-----------------------------------------------------
+:: Shared Styles
+:: Page Name 1
+:: Page Name 2
+*/
+
+
+/* -----------------------------------------
+   Shared Styles
+----------------------------------------- */
+.top-bar {
+margin: 0;
+} 
+
+header{
+background-color: #2BA6CB;
+margin-bottom: 10px;
+
+}
+
+header h2{
+color: #fff;
+}
+
+header p{
+color: #fff;
+}
+
+table{
+width: 100%;
+}
+
+td.centered{
+text-align: center;
+}
+
+td.rightered{
+text-align: right;
+}
+
+div.right{
+text-align: right;
+}
+
+ul.breadcrumbs li a, ul.breadcrumbs li span {
+color: #5DA423;
+}
+
+ul.accordion > li.active {
+border-top: 3px solid #2BA6CB;
+}
