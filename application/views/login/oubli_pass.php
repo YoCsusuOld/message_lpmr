@@ -1,3 +1,16 @@
+<body>
+
+	<div id="container">
+		<hgroup id="login-title" class="large-margin-bottom">
+	<h1 class="login-title-image">Suivis des messages</h1>
+	<h5>&copy; L3pmres</h5>
+</hgroup>
+
+<div id="form-wrapper">
+
+	<div id="form-block" class="scratch-metal">
+		<div id="form-viewport">
+
 <form method="post" action="" id="form-password" class="input-wrapper orange-gradient glossy" title="Mot de passe oublié?">
 
 				<p class="message">
@@ -12,3 +25,18 @@
 			<button type="submit" class="button glossy full-width" id="send-password">Envoyer nouveau mot de passe</button>
 
 			</form>
+
+			<div id="form-switch">
+				<span class="button-group">
+					<?=anchor('login', 'Connexion', 'class="button anthracite-gradient blue-active "');?>
+					<?=anchor('login/oubli_password', 'Mot de passe perdu ?', 'class="button anthracite-gradient orange-active active"');?>
+					<?=anchor('login/inscription', 'Inscription', 'class="button anthracite-gradient green-active "');?>
+				</span>
+			</div>
+
+
+		</div>
+	</div>
+</div>
+
+	</div>

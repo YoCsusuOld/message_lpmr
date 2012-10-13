@@ -25,6 +25,14 @@
 				</p>
 			</form>
 
+			<div id="form-switch">
+				<span class="button-group">
+					<?=anchor('login', 'Connexion', 'class="button anthracite-gradient blue-active active"');?>
+					<?=anchor('login/oubli_password', 'Mot de passe perdu ?', 'class="button anthracite-gradient orange-active "');?>
+					<?=anchor('login/inscription', 'Inscription', 'class="button anthracite-gradient green-active "');?>
+				</span>
+			</div>
+
 			
 		</div>
 	</div>
