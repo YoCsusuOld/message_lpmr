@@ -7,6 +7,8 @@ class Board extends CI_Controller {
       $this->load->model('board_model');
       $data["results"] = $this->board_model->get_all();
     	$data["content"]= 'board/board';
+      $data["menu"]= 'menu/admin';
+      //if admin $data["menu"]='menu/admin';
     	$this->load->view ('template/template',$data);
   	}
 
