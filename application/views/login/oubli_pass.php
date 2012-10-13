@@ -6,12 +6,13 @@
 	<h5>&copy; L3pmres</h5>
 </hgroup>
 
+<?=$this->session->flashdata('error')?>
 <div id="form-wrapper">
 
 	<div id="form-block" class="scratch-metal">
 		<div id="form-viewport">
 
-<form method="post" action="" id="form-password" class="input-wrapper orange-gradient glossy" title="Mot de passe oublié?">
+			<?=form_open('login/oubli_pass', 'id="form-password" class="input-wrapper orange-gradient glossy" title="Mot de passe oublié?"')?>
 
 				<p class="message">
 					Si vous avez perdu votre mot de passe, communiquez nous votre adresse e-mail et un nouveau mot de passe vous sera envoyé:
@@ -24,7 +25,7 @@
 
 			<button type="submit" class="button glossy full-width" id="send-password">Envoyer nouveau mot de passe</button>
 
-			</form>
+			<?=form_close()?>
 
 			<div id="form-switch">
 				<span class="button-group">

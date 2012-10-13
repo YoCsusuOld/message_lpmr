@@ -49,6 +49,36 @@ class Login extends CI_Controller {
       $this->load->view ('template/template',$data);
     }
   }
+
+  public function oubli_pass()
+  {
+    $this->form_validation->set_rules('mail', 'Mail', 'trim|required|valid_email');
+
+    if ($this->form_validation->run()) {
+      $this->load->model('login_model');
+
+      $id_user = $this->login_model->issetUser($this->input->post('mail'));
+
+        //Si l'email postée existe
+       if ($id_user) {
+         $token = md5(uniqid(rand(), true));
+         $this->login_model->insertToken($id_user,$token);
+        // $this->session->flashdata('error', '<p class="message green-gradient" style="display: block; ">Un email vient de vous être envoyé !<span class="close show-on-parent-hover">✕</span><span class="block-arrow bottom"><span></span></span></p>');
+         $this->session->flashdata('error', 'TEST');
+         redirect('login/oubli_password');
+       } else {
+          $this->session->flashdata('error', '<p class="message red-gradient" style="display: block; ">L\'adresse email n\'existe pas !<span class="close show-on-parent-hover">✕</span><span class="block-arrow bottom"><span></span></span></p>');
+          redirect('login/oubli_password');
+       }
+    } else {
+      $this->session->flashdata('error', 'TEST');
+    }
+  }
+
+
+
+
+
 }
 
 /* End of file login.php */

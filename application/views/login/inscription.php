@@ -10,7 +10,7 @@
 
 	<div id="form-block" class="scratch-metal">
 		<div id="form-viewport">
-
+			<?=$this->session->flashdata('error')?>
 			<?php 
 			$attributes = array('id' => 'form-register','class' => 'input-wrapper green-gradient glossy',  'title' => 'Inscription'); 
 			echo form_open('login/signup', $attributes);

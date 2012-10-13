@@ -10,7 +10,7 @@
 
 	<div id="form-block" class="scratch-metal">
 		<div id="form-viewport">
-
+			<?=$this->session->flashdata('error')?>
 			<form method="post" action="" id="form-login" class="input-wrapper blue-gradient glossy" title="Connexion">
 				<ul class="inputs black-input large">
 					<!-- The autocomplete="off" attributes is the only way to prevent webkit browsers from filling the inputs with yellow -->
