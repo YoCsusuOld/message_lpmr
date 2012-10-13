@@ -2,17 +2,11 @@
 
 class Board extends CI_Controller {
 
-	public function __construct()
-	{
-      parent::__construct();
-      //Load Dependencies
-  	}
-
   	public function index()
   	{
       $this->load->model('board_model');
       $data["results"] = $this->board_model->get_all();
-    	$data["content"]= 'board/index';
+    	$data["content"]= 'board/board';
     	$this->load->view ('template/template',$data);
   	}
 
@@ -20,7 +14,7 @@ class Board extends CI_Controller {
     {
       $this->load->model('board_model');
       $data["results"] = $this->board_model->get($id);
-      $data["content"]= 'board/index';
+      $data["content"]= 'board/board';
       $this->load->view ('template/template',$data);
     }
 
