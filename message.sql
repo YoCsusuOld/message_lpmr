@@ -26,6 +26,8 @@ SET time_zone = "+00:00";
 -- Structure de la table `membre`
 --
 
+USE message;
+
 CREATE TABLE IF NOT EXISTS `membre` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) DEFAULT NULL,

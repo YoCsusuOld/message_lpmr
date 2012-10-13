@@ -8,16 +8,8 @@
 
 <head>
 	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-	<title>Developr</title>
-	<meta name="description" content="">
-	<meta name="author" content="">
-
-	<!-- http://davidbcalhoun.com/2010/viewport-metatag -->
-	<meta name="HandheldFriendly" content="True">
-	<meta name="MobileOptimized" content="320">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<title>eMessage L3PMRES</title>
 
 	<!-- For all browsers -->
 	<link rel="stylesheet" href="<?php echo css_url('reset');?>">
@@ -46,36 +38,4 @@
 
 	<!-- JavaScript at bottom except for Modernizr -->
 	<script src="<?php echo js_url('libs/modernizr.custom'); ?>"></script>
-
-	<!-- For Modern Browsers -->
-	<link rel="shortcut icon" href="<?php echo img_url('favicons/favicon.png'); ?>">
-	<!-- For everything else -->
-	<link rel="shortcut icon" href="<?php echo img_url('favicons/favicon.ico'); ?>">
-	<!-- For retina screens -->
-	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="<?php echo img_url('favicons/apple-touch-icon-retina.png'); ?>">
-	<!-- For iPad 1-->
-	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="<?php echo img_url('favicons/apple-touch-icon-ipad.png'); ?>">
-	<!-- For iPhone 3G, iPod Touch and Android -->
-	<link rel="apple-touch-icon-precomposed" href="<?php echo img_url('favicons//apple-touch-icon.png'); ?>">
-
-	<!-- iOS web-app metas -->
-	<meta name="apple-mobile-web-app-capable" content="yes">
-	<meta name="apple-mobile-web-app-status-bar-style" content="black">
-
-	<!-- Startup image for web apps -->
-	<link rel="apple-touch-startup-image" href="<?php echo img_url('splash/ipad-landscape.png'); ?>" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape)">
-	<link rel="apple-touch-startup-image" href="<?php echo img_url('splash/ipad-portrait.png'); ?>" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait)">
-	<link rel="apple-touch-startup-image" href="<?php echo img_url('splash/iphone.png'); ?>" media="screen and (max-device-width: 320px)">
-
-	<!-- Microsoft clear type rendering -->
-	<meta http-equiv="cleartype" content="on">
-
-	<!-- IE9 Pinned Sites: http://msdn.microsoft.com/en-us/library/gg131029.aspx -->
-	<meta name="application-name" content="Developr Admin Skin">
-	<meta name="msapplication-tooltip" content="Cross-platform admin template.">
-	<meta name="msapplication-starturl" content="http://www.display-inline.fr/demo/developr">
-	<!-- These custom tasks are examples, you need to edit them to show actual pages -->
-	<meta name="msapplication-task" content="name=Agenda;action-uri=http://www.display-inline.fr/demo/developr/agenda.html;icon-uri=http://www.display-inline.fr/demo/developr/img/favicons/favicon.ico">
-	<meta name="msapplication-task" content="name=My profile;action-uri=http://www.display-inline.fr/demo/developr/profile.html;icon-uri=http://www.display-inline.fr/demo/developr/img/favicons/favicon.ico">
-
 </head>
