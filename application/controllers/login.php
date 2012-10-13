@@ -8,18 +8,6 @@ class Login extends CI_Controller {
     $this->load->view ('template/template',$data);
   }
 
-  public function oubli_password()
-  {
-    $data["content"]= 'login/oubli_pass';
-    $this->load->view ('template/template',$data);
-  }
-
-  public function inscription()
-  {
-    $data["content"]= 'login/inscription';
-    $this->load->view ('template/template',$data);
-  }
-
   public function signup()
   {
     $this->form_validation->set_rules('name', 'Name', 'trim|required');
