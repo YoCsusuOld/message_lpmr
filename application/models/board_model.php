@@ -1,6 +1,6 @@
 <?php 
 /**
-* 
+* *
 */
 class Board_model extends CI_Model
 {
