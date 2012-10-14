@@ -66,7 +66,43 @@ class Login extends CI_Controller {
     }
   }
 
+public function verification_local()
+    {
+    
 
+      $this->load->library('form_validation');
+      $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
+      $this->form_validation->set_rules('password', 'Mot de passe', 'required');
+      $this->form_validation->set_error_delimiters('<small class="error">', '</small>');
+
+        if ($this->form_validation->run() == FALSE) {
+        $scope = "publish_stream,offline_access,publish_stream,email";
+      $data['auth_url'] = $this->facebook_oauth->getAuthorizeUrl($scope);
+      $this->load->vars('data', $data);
+      $data['content'] = 'compte/compte';
+      $this->load->view('template/template',$data);
+        }
+        else {
+          $this->load->model('clients_model');
+        $data_client = $this->clients_model->getClient($this->input->post('email'),$this->input->post('password'));
+
+        if ($data_client->logged == TRUE) {
+          $newdata = array(
+                   'logged'  => $data_client->logged,
+                   'email'     => $data_client->email,
+                   'prenom' => $data_client->prenom,
+                   'nom' => $data_client->nom,
+                   'id_client' => $data_client->id_client,
+                );
+        $this->session->set_userdata($newdata);
+
+        redirect('accueil');
+        } else {
+          $this->session->set_flashdata('error', '<div class="alert-box alert">Combinaison e-mail/mot de passe incorrecte.<a href="" class="close">&times;</a></div>');
+          redirect('compte');
+        }
+        }
+    }
 
 
 
