@@ -49,10 +49,10 @@
               </div>
               <div class="content">
                 <?=form_open('login/inscription')?>
-		  			<input type="text" name="nom" id="nom" value="" placeholder="Votre nom">
-		  			<input type="text" name="email" id="email" value="" placeholder="Votre adresse email">
+		  			<input type="text" name="name" id="name" value="" placeholder="Votre nom">
+		  			<input type="text" name="mail" id="mail" value="" placeholder="Votre adresse email">
 		  			<input type="text" name="login" id="login" value="" placeholder="Votre nom d'utilisateur">
-		  			<input type="password" name="password" id="password" value="" placeholder="Votre mot de passe">
+		  			<input type="password" name="pass" id="pass" value="" placeholder="Votre mot de passe">
 					<button class="button twelve" type="submit">M'inscrire</button>
 		  		<?=form_close()?>
               </div>

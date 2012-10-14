@@ -44,11 +44,12 @@ class Login extends CI_Controller {
         'login'=>$this->input->post('login'),
         'pass'=>sha1($this->input->post('pass'))
         );
+
+      var_dump($data);
       $this->login_model->inscription($data);
 
       $this->session->set_flashdata('error', '<div class="alert-box success">Ta mère la  Cambodgienne !!!<a href="" class="close">×</a></div>');
-      $this->session->set_userdata($newdata);
-      redirect('login/inscription');
+      redirect('login/login');
     }
     else
     {

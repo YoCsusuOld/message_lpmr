@@ -8,7 +8,7 @@ class Login_model extends CI_Model {
        //Do your magic here
     }
 
-    function signup ($data)
+    function inscription($data)
     {
     	$this->db->insert('membre',$data);
     }
