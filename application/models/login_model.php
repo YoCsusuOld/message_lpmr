@@ -32,6 +32,28 @@ class Login_model extends CI_Model {
     	$this->db->where('id',$id_user);
     	$this->db->update('membre', $data); 
     }
+
+    function getClient($mail,$pass)
+    {
+        $this->db->from('membre');
+        $this->db->where('mail' , $mail);
+        $this->db->where('pass' , sha1($pass));
+
+        $query = $this->db->get();
+
+        if ($query->num_rows() > 0) {
+            $row = $query->row();
+
+            $data->mail = $row->mail; 
+            $data->name = $row->name; 
+            $data->login = $row->login; 
+            $data->id_client = $row->id_client; 
+            $data->logged = TRUE; 
+        } else {
+            $data->logged = FALSE; 
+        }
+        return $data;
+    }
 }
 
 /* End of file login_model.php */

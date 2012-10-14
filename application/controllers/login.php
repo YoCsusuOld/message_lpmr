@@ -71,34 +71,34 @@ public function connexion()
       $this->form_validation->set_rules('pass', 'Mot de passe', 'required');
       $this->form_validation->set_error_delimiters('<small class="error">', '</small>');
 
-      if ($this->form_validation->run() == FALSE) {
-      $data['content'] = 'login/login';
-      $this->load->view('template/template',$data);
-        }
-        else {
-          $this->load->model('clients_model');
-        $data_client = $this->clients_model->getClient($this->input->post('email'),$this->input->post('password'));
+      if ($this->form_validation->run())
+      {
+        $this->load->model('login_model');
 
-        if ($data_client->logged == TRUE) {
-          $newdata = array(
+        $data_client = $this->login_model->getClient($this->input->post('mail'),$this->input->post('pass'));
+
+        //si l'utilisateur existe
+                if ($data_client->logged == TRUE) {
+                    $newdata = array(
                    'logged'  => $data_client->logged,
                    'email'     => $data_client->email,
                    'prenom' => $data_client->prenom,
                    'nom' => $data_client->nom,
                    'id_client' => $data_client->id_client,
                 );
+        $this->session->set_flashdata('error', '<div class="alert-box success">Ta mère la  Cambodgienne !!!<a href="" class="close">×</a></div>');
         $this->session->set_userdata($newdata);
-
-        redirect('accueil');
-        } else {
-          $this->session->set_flashdata('error', '<div class="alert-box alert">Combinaison e-mail/mot de passe incorrecte.<a href="" class="close">&times;</a></div>');
-          redirect('compte');
-        }
-        }
+        redirect('http://google.fr');
+      } else {
+        $this->session->set_flashdata('error', '<div class="alert-box alert">Le compte n\'existe pas <a href="" class="close">×</a></div>');
+        redirect('http://facebook.com');
+      }
+    }else{
+      $data["content"]= 'login/login';
+      $data['active'] = 'connexion';
+      $this->load->view ('template/template',$data);
     }
-
-
-
+  }
 }
 
 /* End of file login.php */
