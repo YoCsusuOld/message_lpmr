@@ -46,17 +46,42 @@ class Login extends CI_Controller {
     if ($this->form_validation->run()) {
       $this->load->model('login_model');
 
-      $id_user = $this->login_model->issetUser($this->input->post('mail'));
+      $id_user = $this->login_model->issetUser($this->input->post('email'));
 
         //Si l'email postée existe
        if ($id_user) {
          $token = md5(uniqid(rand(), true));
          $this->login_model->insertToken($id_user,$token);
+         
+         $this->load->library('email');
+
+         $user = $this->login_model->getMailClient($id_user);
+         // ENVOI DU MAIL
+        $this->email->from('anthony.tournier25@gmail.com', 'anthony tournier');
+        $this->email->to($user->mail);
+
+        $this->email->subject('eMessage - Récupération de votre mot de passe');
+        $message = '
+        <html>
+          <head></head>
+          <body>
+            <p>Bonjour ,</p>
+            <p>Vous avez demandé à changer votre mot de passe. Pour cela, rendez-vous à l\'adresse suivante :</p>
+            <p><a href="'.base_url().'login/recuperer/'.$token.'">'.base_url().'login/recuperer/'.$token.'</a></p>
+          </body>
+        </html>
+        ';
+        $this->email->message($message);  
+
+        $this->email->send();
+
+        // FIN ENVOI DU MAIL
+
           $this->session->set_flashdata('error', '<div class="alert-box success">Un email vous a été envoyé !<a href="" class="close">×</a></div>');
-         redirect('login/oubli_password');
+         redirect('login/login');
        } else {
           $this->session->set_flashdata('error', '<div class="alert-box alert">L\'adresse email n\'existe pas !<a href="" class="close">×</a></div>');
-          redirect('login/oubli_password');
+          redirect('login/login');
        }
     } else {
       $data["content"]= 'login/login';

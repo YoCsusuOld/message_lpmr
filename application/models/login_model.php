@@ -54,6 +54,20 @@ class Login_model extends CI_Model {
         }
         return $data;
     }
+
+    function getMailClient($id_user)
+    {
+
+        $this->db->from('membre');
+        $this->db->where('id' , $id_user);
+
+        $query = $this->db->get();
+        foreach ($query->result() as $row)
+        {
+            $data[] = $row; 
+        }
+        return $data[0];
+    }
 }
 
 /* End of file login_model.php */
