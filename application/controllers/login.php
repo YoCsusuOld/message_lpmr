@@ -28,7 +28,7 @@ class Login extends CI_Controller {
   }
 
 
-  public function signup()
+  public function inscription()
   {
     $this->form_validation->set_rules('name', 'Name', 'trim|required');
     $this->form_validation->set_rules('mail', 'Mail', 'trim|required|valid_email|is_unique[membre.mail]');
@@ -37,23 +37,24 @@ class Login extends CI_Controller {
 
     if ($this->form_validation->run())
     {
+      $this->load->model('login_model');
       $data = array(
         'name'=>$this->input->post('name'),
         'mail'=>$this->input->post('mail'),
         'login'=>$this->input->post('login'),
         'pass'=>sha1($this->input->post('pass'))
         );
+      $this->login_model->inscription($data);
 
-      $this->load->model('login_model');
-      $this->login_model->signup($data);
-      $data["success"] = 'Inscription réussie';
-      $data["content"] = 'login/login';
-      $this->load->view ('template/template',$data);
+      $this->session->set_flashdata('error', '<div class="alert-box success">Ta mère la  Cambodgienne !!!<a href="" class="close">×</a></div>');
+      $this->session->set_userdata($newdata);
+      redirect('login/inscription');
     }
     else
     {
+      $this->session->set_flashdata('error', '<div class="alert-box alert">Inscription incorrect <a href="" class="close">×</a></div>');
       $data["content"]= 'login/login';
-      $data['show_register'] = TRUE;
+      $data['active'] = 'inscription';
       $this->load->view ('template/template',$data);
     }
   }
