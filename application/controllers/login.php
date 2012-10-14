@@ -146,7 +146,7 @@ class Login extends CI_Controller {
         $this->session->set_userdata($newdata);
         redirect('login/connexion');
       } else {
-        $this->session->set_flashdata('error', '<div class="alert-box alert">Le compte n\'existe pas <a href="" class="close">×</a></div>');
+        $this->session->set_flashdata('error', '<div class="alert-box alert">Le compte n\'existe pas/Mot de passe incorrect <a href="" class="close">×</a></div>');
         redirect('login/connexion');
       }
     }else{
