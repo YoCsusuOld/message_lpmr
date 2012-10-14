@@ -52,11 +52,10 @@ class Login extends CI_Controller {
        if ($id_user) {
          $token = md5(uniqid(rand(), true));
          $this->login_model->insertToken($id_user,$token);
-        // $this->session->flashdata('error', '<p class="message green-gradient" style="display: block; ">Un email vient de vous être envoyé !<span class="close show-on-parent-hover">✕</span><span class="block-arrow bottom"><span></span></span></p>');
-         $this->session->flashdata('error', 'TEST');
+          $this->session->set_flashdata('error', '<div class="alert-box success">Un email vous a été envoyé !<a href="" class="close">×</a></div>');
          redirect('login/oubli_password');
        } else {
-          $this->session->flashdata('error', '<p class="message red-gradient" style="display: block; ">L\'adresse email n\'existe pas !<span class="close show-on-parent-hover">✕</span><span class="block-arrow bottom"><span></span></span></p>');
+          $this->session->set_flashdata('error', '<div class="alert-box alert">L\'adresse email n\'existe pas !<a href="" class="close">×</a></div>');
           redirect('login/oubli_password');
        }
     } else {
