@@ -65,20 +65,14 @@ class Login extends CI_Controller {
     }
   }
 
-public function verification_local()
+public function connexion()
     {
-    
-
-      $this->load->library('form_validation');
-      $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
-      $this->form_validation->set_rules('password', 'Mot de passe', 'required');
+      $this->form_validation->set_rules('mail', 'mail', 'required|valid_email');
+      $this->form_validation->set_rules('pass', 'Mot de passe', 'required');
       $this->form_validation->set_error_delimiters('<small class="error">', '</small>');
 
-        if ($this->form_validation->run() == FALSE) {
-        $scope = "publish_stream,offline_access,publish_stream,email";
-      $data['auth_url'] = $this->facebook_oauth->getAuthorizeUrl($scope);
-      $this->load->vars('data', $data);
-      $data['content'] = 'compte/compte';
+      if ($this->form_validation->run() == FALSE) {
+      $data['content'] = 'login/login';
       $this->load->view('template/template',$data);
         }
         else {
