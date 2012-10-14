@@ -8,6 +8,26 @@ class Login extends CI_Controller {
     $this->load->view ('template/template',$data);
   }
 
+  public function modif_passwrd()
+  {
+    $this->form_validation->set_rules('password1', 'Mot de passe 1', 'trim|required|matches[password2]');
+    $this->form_validation->set_rules('password2', 'Mot de passe 2', 'trim|required');
+
+    if ($this->form_validation->run())
+    {
+      $data = array('pass' => sha1($this->input->post('password2')) ,
+                    'token' => '' );
+
+      $this->load->model('login_model');
+      $this->login_model->setNewPassword($data,$this->input->post('token'));
+       $this->session->set_flashdata('error', '<div class="alert-box success">Mot de passe modifié !<a href="" class="close">×</a></div>');
+       redirect('login/login');
+    } else {
+      redirect('login/recuperer/'.$this->input->post('token'));
+    }
+  }
+
+
   public function signup()
   {
     $this->form_validation->set_rules('name', 'Name', 'trim|required');
@@ -95,7 +115,8 @@ class Login extends CI_Controller {
       if (!$token) {
         redirect('login');
       } else {
-        echo $token;
+        $data["content"]= 'login/recuperer';
+        $this->load->view ('template/template',$data);
       }
     }
 

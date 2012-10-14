@@ -68,6 +68,12 @@ class Login_model extends CI_Model {
         }
         return $data[0];
     }
+
+    function setNewPassword($data,$token)
+    {
+        $this->db->where('token',$token);
+        $this->db->update('membre', $data); 
+    }
 }
 
 /* End of file login_model.php */
