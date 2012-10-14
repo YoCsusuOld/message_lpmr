@@ -19,7 +19,7 @@
                 <h5>Connexion</h5>
               </div>
               <div class="content">
-                <?=form_open('login/login')?>
+                <?=form_open('login/connexion')?>
 		  			<input type="text" name="login" id="login" value="" placeholder="Identifiant">
 					<input type="password" name="pass" id="pass" value="" placeholder="Mot de passe">
 

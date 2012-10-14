@@ -67,7 +67,7 @@ class Login extends CI_Controller {
 
 public function connexion()
     {
-      $this->form_validation->set_rules('mail', 'mail', 'required|valid_email');
+      $this->form_validation->set_rules('login', 'login', 'required');
       $this->form_validation->set_rules('pass', 'Mot de passe', 'required');
       $this->form_validation->set_error_delimiters('<small class="error">', '</small>');
 
@@ -75,9 +75,9 @@ public function connexion()
       {
         $this->load->model('login_model');
 
-        $data_client = $this->login_model->getClient($this->input->post('mail'),$this->input->post('pass'));
+        $data_client = $this->login_model->getClient($this->input->post('login'),$this->input->post('pass'));
 
-        //si l'utilisateur existe
+        //si l
                 if ($data_client->logged == TRUE) {
                     $newdata = array(
                    'logged'  => $data_client->logged,
@@ -88,10 +88,10 @@ public function connexion()
                 );
         $this->session->set_flashdata('error', '<div class="alert-box success">Ta mère la  Cambodgienne !!!<a href="" class="close">×</a></div>');
         $this->session->set_userdata($newdata);
-        redirect('http://google.fr');
+        redirect('login/connexion');
       } else {
         $this->session->set_flashdata('error', '<div class="alert-box alert">Le compte n\'existe pas <a href="" class="close">×</a></div>');
-        redirect('http://facebook.com');
+        redirect('login/connexion');
       }
     }else{
       $data["content"]= 'login/login';

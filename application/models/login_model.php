@@ -33,10 +33,10 @@ class Login_model extends CI_Model {
     	$this->db->update('membre', $data); 
     }
 
-    function getClient($mail,$pass)
+    function getClient($login,$pass)
     {
         $this->db->from('membre');
-        $this->db->where('mail' , $mail);
+        $this->db->where('login' , $login);
         $this->db->where('pass' , sha1($pass));
 
         $query = $this->db->get();
