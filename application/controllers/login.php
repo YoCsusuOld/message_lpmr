@@ -90,7 +90,16 @@ class Login extends CI_Controller {
     }
   }
 
-public function connexion()
+    public function recuperer($token)
+    {
+      if (!$token) {
+        redirect('login');
+      } else {
+        echo $token;
+      }
+    }
+
+    public function connexion()
     {
       $this->form_validation->set_rules('login', 'login', 'required');
       $this->form_validation->set_rules('pass', 'Mot de passe', 'required');
